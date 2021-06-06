@@ -1,3 +1,5 @@
+// TODO: add css loader
+
 const webpack = require('webpack');
 const path = require('path');
 
