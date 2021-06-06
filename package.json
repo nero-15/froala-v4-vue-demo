@@ -1,0 +1,28 @@
+{
+  "name": "froala-v4-vue-demo",
+  "version": "1.0.0",
+  "description": "## 参考 https://froala.com/wysiwyg-editor/docs/framework-plugins/vue/ https://github.com/froala/vue-froala-wysiwyg/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nero-15/froala-v4-vue-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nero-15/froala-v4-vue-demo/issues"
+  },
+  "homepage": "https://github.com/nero-15/froala-v4-vue-demo#readme",
+  "dependencies": {
+    "vue-froala-wysiwyg": "^4.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
