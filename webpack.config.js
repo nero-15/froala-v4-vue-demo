@@ -1,5 +1,3 @@
-// TODO: add css loader
-
 const webpack = require('webpack');
 const path = require('path');
 
@@ -15,5 +13,17 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist')
-	}
+	},
+	module: {
+    loaders:
+    {
+      test: /\.css$/,
+      loader: 'vue-style-loader!css-loader'
+    },
+  },
+  vue: {
+    loaders: {
+      css: 'vue-style-loader!css-loader'
+    }
+  }
 }
