@@ -4,9 +4,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Froala v4</title>
-	<script defer src="dist/bundle.js"></script>
+	<!-- TODO: setting -->
+	<!-- <script defer src="dist/bundle.js"></script> -->
+
+	<link href='https://cdn.jsdelivr.net/npm/froala-editor@4.0.1/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+
 </head>
 <body>
-	<div id="app"></div>
+	<textarea></textarea>
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.1/js/froala_editor.min.js'></script>
+	<script>
+		new FroalaEditor('textarea');
+	</script>
 </body>
 </html>
