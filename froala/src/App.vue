@@ -3,17 +3,17 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
+
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import VueFroala from 'vue-froala-wysiwyg';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
   },
   data () {
     return {
@@ -24,7 +24,7 @@ export default {
           }
         }
       },
-      model: 'Edit Your Content Here!'
+      model: 'Edit Your Content Here!',
     }
   }
 }
