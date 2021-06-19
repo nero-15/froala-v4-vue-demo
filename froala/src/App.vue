@@ -2,6 +2,8 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <froala :tag="'textarea'" :config="config" v-model="model"></froala>
+
   </div>
 </template>
 
@@ -11,7 +13,19 @@ import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+  },
+  data () {
+    return {
+      config: {
+        events: {
+          'froalaEditor.initialized': function () {
+            console.log('initialized')
+          }
+        }
+      },
+      model: 'Edit Your Content Here!',
+    }
   }
 }
 </script>
