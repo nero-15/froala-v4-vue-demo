@@ -5,7 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/dashboard.css";
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "feather-icons/dist/feather.min.js"; //TODO
+// import "feather-icons/dist/feather.min.js"; //TODO
+import "chart.js/dist/chart.min.js";
+import "./assets/js/dashboard.js";
 
 // Require Froala Editor js file.
 require('froala-editor/js/froala_editor.pkgd.min.js')
