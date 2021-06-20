@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// Require Froala Editor js file.
-require('froala-editor/js/froala_editor.pkgd.min.js')
+// CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/dashboard.css";
 
-// Require Froala Editor css files.
-require('froala-editor/css/froala_editor.pkgd.min.css')
-require('froala-editor/css/froala_style.min.css')
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.min.css";
 
-// Import and use Vue Froala lib.
+// JS
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "feather-icons/dist/feather.min.js"; //TODO
+import "chart.js/dist/chart.min.js"; //TODO
+import "./assets/js/dashboard.js";
+
+import "froala-editor/js/froala_editor.pkgd.min.js";
 import VueFroala from 'vue-froala-wysiwyg'
+
 Vue.use(VueFroala)
 
 Vue.config.productionTip = false
