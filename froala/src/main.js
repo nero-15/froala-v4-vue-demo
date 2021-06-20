@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// Require bootstrap
+require('bootstrap/dist/js/bootstrap.min.js')
+require('bootstrap/dist/css/bootstrap.min.css')
+
 // Require Froala Editor js file.
 require('froala-editor/js/froala_editor.pkgd.min.js')
 
