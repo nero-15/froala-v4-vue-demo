@@ -7,8 +7,6 @@
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <H1></H1>
                     <h2>Section title</h2>
-                    <img alt="Vue logo" src="./assets/logo.png">
-                    <HelloWorld msg="Welcome to Your Vue.js App"/>
                     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
                 </main>
             </div>
@@ -17,7 +15,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import LeftNavi from './components/LeftNavi.vue'
 import H1 from './components/H1.vue'
@@ -25,7 +22,6 @@ import H1 from './components/H1.vue'
 export default {
     name: 'App',
     components: {
-        HelloWorld,
         Header,
         LeftNavi,
         H1,
