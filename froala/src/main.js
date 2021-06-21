@@ -10,9 +10,9 @@ import "froala-editor/css/froala_style.min.css";
 
 // JS
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-// import "feather-icons/dist/feather.min.js"; //TODO
-import "chart.js/dist/chart.min.js"; //TODO
-import "./assets/js/dashboard.js";
+import "feather-icons/dist/feather.min.js"; //TODO
+//import "chart.js/dist/chart.min.js"; //TODO
+//import "./assets/js/dashboard.js";
 
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import VueFroala from 'vue-froala-wysiwyg'
