@@ -5,7 +5,7 @@
             <div class="row">
                 <LeftNavi></LeftNavi>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <H1></H1>
+                    <H1 h1="Dashboard"></H1>
                     <h2>Section title</h2>
                     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
                 </main>
