@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header></Header>
+        <Header/>
         <div class="container-fluid">
             <div class="row">
                 <LeftNavi></LeftNavi>
@@ -8,6 +8,14 @@
                     <H1 h1="Dashboard"/>
                     <h2>Section title</h2>
                     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
+
+
+                    <router-link to="/foo">Go to Foo</router-link><br>
+                    <router-link to="/bar">Go to Bar</router-link><br>
+                    <router-view></router-view>
+
+
+
                 </main>
             </div>
         </div>
@@ -42,14 +50,6 @@ export default {
 </script>
 
 <style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
 // Bootstrap dashboard css
 .bd-placeholder-img {
     font-size: 1.125rem;
