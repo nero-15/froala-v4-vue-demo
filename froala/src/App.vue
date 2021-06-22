@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header></Header>
+        <Header/>
         <div class="container-fluid">
             <div class="row">
                 <LeftNavi></LeftNavi>
