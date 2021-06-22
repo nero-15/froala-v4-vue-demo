@@ -10,7 +10,7 @@ import "froala-editor/css/froala_style.min.css";
 
 // JS
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "feather-icons/dist/feather.min.js"; //TODO
+import feather from "feather-icons/dist/feather.min.js";
 //import "./assets/js/dashboard.js";
 
 import "froala-editor/js/froala_editor.pkgd.min.js";
@@ -23,3 +23,5 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
 }).$mount('#app')
+
+feather.replace();
