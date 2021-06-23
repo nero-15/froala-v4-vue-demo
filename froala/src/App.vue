@@ -10,7 +10,7 @@
                     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
 
 
-                    <router-link to="/">Top</router-link><br>
+                    
                     <router-link to="/create">Create</router-link><br>
                     <router-view />
 
