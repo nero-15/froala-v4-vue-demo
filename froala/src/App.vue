@@ -8,14 +8,7 @@
                     <H1 h1="Dashboard"/>
                     <h2>Section title</h2>
                     <froala :tag="'textarea'" :config="config" v-model="model"></froala>
-
-
-
-                    <router-link to="/create">Create</router-link><br>
                     <router-view />
-
-
-
                 </main>
             </div>
         </div>
