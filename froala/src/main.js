@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import VueFroala from 'vue-froala-wysiwyg'
 import App from './App.vue'
+import router from './router.js'
 
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,24 +15,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import feather from "feather-icons/dist/feather.min.js";
 import "froala-editor/js/froala_editor.pkgd.min.js";
 
-Vue.use(VueRouter)
 Vue.use(VueFroala)
 Vue.config.productionTip = false
 
-// vue router
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
-]
-const router = new VueRouter({
-  routes
-})
-
 new Vue({
   render: h => h(App),
-  router
+  router,
 }).$mount('#app')
 
 feather.replace();
