@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueFroala from 'vue-froala-wysiwyg'
 import App from './App.vue'
 
 // CSS
@@ -12,10 +13,11 @@ import "froala-editor/css/froala_style.min.css";
 // JS
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import feather from "feather-icons/dist/feather.min.js";
-
 import "froala-editor/js/froala_editor.pkgd.min.js";
-import VueFroala from 'vue-froala-wysiwyg'
 
+Vue.use(VueRouter)
+Vue.use(VueFroala)
+Vue.config.productionTip = false
 
 // vue router
 const Foo = { template: '<div>foo</div>' }
@@ -27,12 +29,6 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
-
-Vue.use(VueRouter)
-Vue.use(VueFroala)
-
-Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
