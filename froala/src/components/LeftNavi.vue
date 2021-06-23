@@ -3,17 +3,19 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
+                    <router-link to="/" class="nav-link active" aria-current="page">
                         <span data-feather="home"></span>
-                        Dashboard
-                    </a>
+                        TOP
+                    </router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <router-link to="/create" class="nav-link">
                         <span data-feather="file"></span>
-                        Orders
-                    </a>
+                        Create
+                    </router-link>
                 </li>
+
+                
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <span data-feather="shopping-cart"></span>
