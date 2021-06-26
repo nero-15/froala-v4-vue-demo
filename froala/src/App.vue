@@ -5,7 +5,7 @@
             <div class="row">
                 <LeftNavi></LeftNavi>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <H1 h1="Dashboard"/>
+                    <H1 :h1="$route.name"/>
                     <router-view />
                 </main>
             </div>
@@ -28,6 +28,8 @@ export default {
     data () {
         return {
         }
+    },
+    mounted: function(){
     }
 }
 </script>

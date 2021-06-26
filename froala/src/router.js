@@ -9,7 +9,7 @@ Vue.use(Router)
 export default new Router({
     mode: 'history',
     routes: [
-        { path: '/', name: 'top', component: Top },
+        { path: '/', name: 'top', component: Top},
         { path: '/create', name: 'create', component: Create }
     ]
 })
