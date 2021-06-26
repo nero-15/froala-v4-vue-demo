@@ -3,7 +3,7 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <router-link to="/" class="nav-link active" aria-current="page">
+                    <router-link to="/" class="nav-link" aria-current="page">
                         <span data-feather="home"></span>
                         TOP
                     </router-link>
@@ -23,6 +23,15 @@
 export default {
     name: 'LeftNavi',
     props: {
+    },
+    mounted: function(){
+        console.log(this.$route);
     }
 }
 </script>
+
+<style>
+.sidebar .nav-link.router-link-exact-active {
+    color: #007bff;
+}
+</style>
