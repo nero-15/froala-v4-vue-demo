@@ -22,11 +22,6 @@
 <script>
 export default {
     name: 'LeftNavi',
-    props: {
-    },
-    mounted: function(){
-        console.log(this.$route);
-    }
 }
 </script>
 
