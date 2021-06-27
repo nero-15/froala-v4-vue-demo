@@ -17,7 +17,7 @@
 import Header from './components/Header.vue'
 import LeftNavi from './components/LeftNavi.vue'
 import H1 from './components/H1.vue'
-import firebase from 'firebase'
+//import firebase from 'firebase'
 
 export default {
     name: 'App',
@@ -30,11 +30,11 @@ export default {
         return {
         }
     },
-    created() {
+    created: function() {
         // TODO: 認証追加するそれまではfirebaseのアクセスルールで制限しておく
         console.log('created');
     },
-    mounted: {
+    mounted: function() {
         console.log('mounted');
     }
 }
