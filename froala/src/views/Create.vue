@@ -7,18 +7,21 @@
 
 <script>
 export default {
-  name: 'Create',
-  data () {
-      return {
-          config: {
-              events: {
-                  'froalaEditor.initialized': function () {
-                      console.log('initialized')
-                  }
-              }
-          },
-          model: 'Edit Your Content Here!',
-      }
-  }
+    name: 'Create',
+    data () {
+        return {
+            config: {
+                events: {
+                    'froalaEditor.initialized': function () {
+                        console.log('initialized')
+                    }
+                }
+            },
+            model: 'Edit Your Content Here!',
+        }
+    },
+    mounted: function(){
+
+    }
 }
 </script>
