@@ -30,7 +30,12 @@ export default {
         return {
         }
     },
-    mounted: function(){
+    created() {
+        // TODO: 認証追加するそれまではfirebaseのアクセスルールで制限しておく
+        console.log('created');
+    },
+    mounted: {
+        console.log('mounted');
     }
 }
 </script>
