@@ -2,6 +2,7 @@
     <div>
         <h2>Section title</h2>
         <froala :tag="'textarea'" :config="config" v-model="model"></froala>
+        <button @click="send()">send</button>
     </div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
         }
     },
     mounted: function(){
+    },
+    methods: {
+        send: function(){
+            console.log('send');
+        }
     }
 }
 </script>
