@@ -17,7 +17,6 @@
                     </div>
 
 
-
                     <router-view />
                 </main>
             </div>
@@ -48,6 +47,14 @@ export default {
     },
     mounted: function() {
         console.log('mounted');
+    },
+    methods: {
+        login: function(){
+            console.log('login');
+        },
+        logout: function(){
+            console.log('logout');
+        }
     }
 }
 </script>
