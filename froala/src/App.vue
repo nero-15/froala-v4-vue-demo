@@ -15,6 +15,7 @@
                     <div v-else>
                         <button type="button" @click="login">ログイン</button>
                     </div>
+                    <div id="firebaseui-auth-container"></div>
 
 
                     <router-view />
@@ -28,7 +29,9 @@
 import Header from './components/Header.vue'
 import LeftNavi from './components/LeftNavi.vue'
 import H1 from './components/H1.vue'
-//import firebase from 'firebase'
+import firebase from 'firebase'
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css';
 
 export default {
     name: 'App',
@@ -48,6 +51,14 @@ export default {
     },
     mounted: function() {
         console.log('mounted');
+
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', {
+            signInSuccessUrl: '/',
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+        });
     },
     methods: {
         login: function(){
