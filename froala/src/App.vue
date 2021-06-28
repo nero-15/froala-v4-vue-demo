@@ -6,6 +6,18 @@
                 <LeftNavi></LeftNavi>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <H1 :h1="$route.name"/>
+
+                    // TODO: デザイン
+                    <div v-if="user.uid">
+                        {{ user.displayName }}
+                        <button type="button" @click="logout">ログアウト</button>
+                    </div>
+                    <div v-else>
+                        <button type="button" @click="login">ログイン</button>
+                    </div>
+                    <div id="firebaseui-auth-container"></div>
+
+
                     <router-view />
                 </main>
             </div>
@@ -17,7 +29,9 @@
 import Header from './components/Header.vue'
 import LeftNavi from './components/LeftNavi.vue'
 import H1 from './components/H1.vue'
-//import firebase from 'firebase'
+import firebase from 'firebase'
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css';
 
 export default {
     name: 'App',
@@ -28,6 +42,7 @@ export default {
     },
     data () {
         return {
+            user: {},  // ユーザー情報
         }
     },
     created: function() {
@@ -36,6 +51,22 @@ export default {
     },
     mounted: function() {
         console.log('mounted');
+
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', {
+            signInSuccessUrl: '/',
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+        });
+    },
+    methods: {
+        login: function(){
+            console.log('login');
+        },
+        logout: function(){
+            console.log('logout');
+        }
     }
 }
 </script>
