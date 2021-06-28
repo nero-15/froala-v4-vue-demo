@@ -39,6 +39,7 @@ export default {
     },
     data () {
         return {
+            user: {},  // ユーザー情報
         }
     },
     created: function() {
