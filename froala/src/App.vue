@@ -6,6 +6,18 @@
                 <LeftNavi></LeftNavi>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <H1 :h1="$route.name"/>
+
+                    // TODO: デザイン
+                    <div v-if="user.uid">
+                        {{ user.displayName }}
+                        <button type="button" @click="logout">ログアウト</button>
+                    </div>
+                    <div v-else>
+                        <button type="button" @click="login">ログイン</button>
+                    </div>
+
+
+
                     <router-view />
                 </main>
             </div>
