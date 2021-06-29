@@ -4,22 +4,15 @@
         <div class="container-fluid">
             <div class="row">
                 <LeftNavi></LeftNavi>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <main v-if="user.uid" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <H1 :h1="$route.name"/>
-
-                    // TODO: デザイン
-                    <div v-if="user.uid">
-                        {{ user.displayName }}
-                        <button type="button" @click="logout">ログアウト</button>
-                    </div>
-                    <div v-else>
-                        <button type="button" @click="login">ログイン</button>
-                    </div>
-                    <div id="firebaseui-auth-container"></div>
-
-
                     <router-view />
                 </main>
+                <div v-else>
+                    <div id="firebaseui-auth-container"></div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -45,29 +38,21 @@ export default {
             user: {},  // ユーザー情報
         }
     },
-    created: function() {
-        // TODO: 認証追加するそれまではfirebaseのアクセスルールで制限しておく
-        console.log('created');
-    },
     mounted: function() {
-        console.log('mounted');
-
-        var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        ui.start('#firebaseui-auth-container', {
-            signInSuccessUrl: '/',
-            signInOptions: [
-                firebase.auth.EmailAuthProvider.PROVIDER_ID
-            ],
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.user = user;
+            } else {
+                var ui = new firebaseui.auth.AuthUI(firebase.auth());
+                ui.start('#firebaseui-auth-container', {
+                    signInSuccessUrl: '/',
+                    signInOptions: [
+                        firebase.auth.EmailAuthProvider.PROVIDER_ID
+                    ],
+                });
+            }
         });
     },
-    methods: {
-        login: function(){
-            console.log('login');
-        },
-        logout: function(){
-            console.log('logout');
-        }
-    }
 }
 </script>
 
