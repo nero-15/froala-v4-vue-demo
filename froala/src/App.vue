@@ -38,10 +38,6 @@ export default {
             user: {},  // ユーザー情報
         }
     },
-    created: function() {
-        // TODO: 認証追加するそれまではfirebaseのアクセスルールで制限しておく
-        console.log('created');
-    },
     mounted: function() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
