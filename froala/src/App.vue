@@ -12,6 +12,7 @@
                 <div v-else>
                     <div id="firebaseui-auth-container"></div>
                 </div>
+
             </div>
         </div>
     </div>
