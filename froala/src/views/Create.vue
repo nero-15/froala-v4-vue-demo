@@ -21,8 +21,6 @@ export default {
             model: 'Edit Your Content Here!',
         }
     },
-    mounted: function(){
-    },
     methods: {
         send: function(){
             console.log('send');
