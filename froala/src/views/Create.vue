@@ -7,10 +7,13 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
     name: 'Create',
     data () {
         return {
+            db: {},
             config: {
                 events: {
                     'froalaEditor.initialized': function () {
@@ -21,7 +24,9 @@ export default {
             model: 'Edit Your Content Here!',
         }
     },
-    mounted: function(){
+    created: function(){
+        this.db = firebase.firestore();
+        console.log(this.db);
     },
     methods: {
         send: function(){
