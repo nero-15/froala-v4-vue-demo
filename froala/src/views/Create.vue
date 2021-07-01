@@ -17,7 +17,6 @@ export default {
             config: {
                 events: {
                     'froalaEditor.initialized': function () {
-                        console.log('initialized')
                     }
                 }
             },
