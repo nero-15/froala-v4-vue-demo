@@ -7,10 +7,13 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
     name: 'Create',
     data () {
         return {
+            db: {},
             config: {
                 events: {
                     'froalaEditor.initialized': function () {
@@ -21,9 +24,22 @@ export default {
             model: 'Edit Your Content Here!',
         }
     },
+    created: function(){
+        this.db = firebase.firestore();
+    },
     methods: {
         send: function(){
-            console.log('send');
+            this.db.collection("articles").add({
+                title: "hello world",
+                contents: this.model,
+                created: "2021-07-01 22:39:00"
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
         }
     }
 }
