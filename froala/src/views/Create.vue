@@ -24,12 +24,9 @@ export default {
             model: 'Edit Your Content Here!',
         }
     },
-<<<<<<< HEAD
     created: function(){
         this.db = firebase.firestore();
     },
-=======
->>>>>>> main
     methods: {
         send: function(){
             this.db.collection("articles").add({
