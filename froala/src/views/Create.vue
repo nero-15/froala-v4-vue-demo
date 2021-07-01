@@ -26,7 +26,6 @@ export default {
     },
     created: function(){
         this.db = firebase.firestore();
-        console.log(this.db);
     },
     methods: {
         send: function(){
