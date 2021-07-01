@@ -29,7 +29,6 @@ export default {
     },
     methods: {
         send: function(){
-            console.log('send');
             this.db.collection("articles").add({
                 title: "hello world",
                 contents: this.model,
