@@ -11,6 +11,7 @@ export default new Router({
     base: "/",
     routes: [
         { path: '/', name: 'top', component: Top},
-        { path: '/create', name: 'create', component: Create }
+        { path: '/create', name: 'create', component: Create },
+        { path: '/article/:id', name: 'edit', component: Create },
     ]
 })
