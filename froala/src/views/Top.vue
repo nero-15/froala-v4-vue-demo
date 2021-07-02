@@ -32,14 +32,20 @@ export default {
     data () {
         return {
             db: {},
-            articles: {},
+            articles: [],
         }
     },
     created: function(){
         this.db = firebase.firestore();
-        this.db.collection("users").get().then((querySnapshot) => {
+        var self = this;
+        this.db.collection("articles").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
+                var article = {
+                    id: doc.id,
+                    title: doc.data().title,
+                    created: doc.data().created,
+                }
+                self.articles.push(article);
             });
         });
     },
