@@ -25,7 +25,23 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-    name: 'Top'
+    name: 'Top',
+    data () {
+        return {
+            db: {},
+            articles: {},
+        }
+    },
+    created: function(){
+        this.db = firebase.firestore();
+        this.db.collection("users").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+            });
+        });
+    },
 }
 </script>
