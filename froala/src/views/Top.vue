@@ -12,10 +12,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
+                    <tr v-for="article in articles" :key="article.id">
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.created }}</td>
                         <td>link</td>
                     </tr>
                 </tbody>
