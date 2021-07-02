@@ -16,7 +16,9 @@
                         <td>{{ article.id }}</td>
                         <td>{{ article.title }}</td>
                         <td>{{ article.created }}</td>
-                        <td>link</td>
+                        <td>
+                            <router-link :to="'/article/' + article.id" class="stretched-link">detail page</router-link>
+                        </td>
                     </tr>
                 </tbody>
             </table>
