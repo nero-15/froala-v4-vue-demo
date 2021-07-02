@@ -34,10 +34,11 @@ export default {
     },
     methods: {
         send: function(){
+            var date = new Date();
             this.db.collection("articles").add({
                 title: "hello world",
                 contents: this.model,
-                created: "2021-07-01 22:39:00"
+                created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
             })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
