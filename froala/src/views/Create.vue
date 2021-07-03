@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Section title</h2>
-        <froala :tag="'textarea'" :config="config" v-model="model"></froala>
+        <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
         <button @click="send()">send</button>
     </div>
 </template>
@@ -26,11 +26,19 @@ export default {
                     }
                 }
             },
-            model: 'Edit Your Content Here!',
+            id: '',
+            title: '',
+            contents: 'Edit Your Content Here!',
         }
     },
     created: function(){
+        this.id = this.$route.params.id;
         this.db = firebase.firestore();
+
+
+
+
+
     },
     methods: {
         send: function(){
@@ -40,7 +48,7 @@ export default {
                 contents: this.model,
                 created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
             })
-            .then((docRef) => {
+            .then(() => {
             })
             .catch((error) => {
                 alert("Error adding document: " + error);
