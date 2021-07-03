@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>Section title</h2>
         <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
         <button @click="send()">send</button>
     </div>
@@ -27,6 +26,7 @@ export default {
                 }
             },
             id: '',
+            article: {},
             title: '',
             contents: 'Edit Your Content Here!',
         }
@@ -34,11 +34,16 @@ export default {
     created: function(){
         this.id = this.$route.params.id;
         this.db = firebase.firestore();
-
-
-
-
-
+        if (this.id) {
+            var self = this;
+            var docRef = this.db.collection("articles").doc(this.id);
+            docRef.get().then((doc) => {
+                self.title = doc.get('title');
+                self.contents = doc.get('contents');
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        }
     },
     methods: {
         send: function(){
