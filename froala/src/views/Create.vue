@@ -38,6 +38,7 @@ export default {
             var self = this;
             var docRef = this.db.collection("articles").doc(this.id);
             docRef.get().then((doc) => {
+                self.article = doc;
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
             }).catch((error) => {
@@ -48,16 +49,21 @@ export default {
     methods: {
         send: function(){
             var date = new Date();
-            this.db.collection("articles").add({
-                title: "hello world",
-                contents: this.model,
-                created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
-            })
-            .then(() => {
-            })
-            .catch((error) => {
-                alert("Error adding document: " + error);
-            });
+            if (!this.id) {
+                this.db.collection("articles").add({
+                    title: "hello world",
+                    contents: this.contents,
+                    created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
+                })
+                .then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch((error) => {
+                    alert("Error adding document: " + error);
+                });
+            } else {// TODO: 編集
+                console.log('aaa');
+            }
         }
     }
 }
