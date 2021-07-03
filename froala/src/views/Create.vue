@@ -41,7 +41,7 @@ export default {
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
             }).catch((error) => {
-                console.log("Error getting document:", error);
+                alert("Error getting document:" + error);
             });
         }
     },
