@@ -8,6 +8,7 @@
                         <th>#</th>
                         <th>title</th>
                         <th>created</th>
+                        <th>updated</th>
                         <th>detail</th>
                     </tr>
                 </thead>
@@ -16,8 +17,9 @@
                         <td>{{ article.id }}</td>
                         <td>{{ article.title }}</td>
                         <td>{{ article.created }}</td>
+                        <td>{{ article.updated }}</td>
                         <td>
-                            <router-link :to="'/article/' + article.id" class="stretched-link">detail page</router-link>
+                            <router-link :to="'/article/' + article.id">detail page</router-link>
                         </td>
                     </tr>
                 </tbody>
@@ -44,8 +46,9 @@ export default {
             querySnapshot.forEach((doc) => {
                 var article = {
                     id: doc.id,
-                    title: doc.data().title,
-                    created: doc.data().created,
+                    title: doc.get('title'),
+                    created: doc.get('created'),
+                    updated: doc.get('updated')
                 }
                 self.articles.push(article);
             });

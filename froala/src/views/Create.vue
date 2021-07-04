@@ -1,7 +1,16 @@
 <template>
     <div>
-        <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
-        <button @click="send()">send</button>
+        <form>
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input type="email" class="form-control" id="title" v-model="title">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">contents</label>
+                <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
+            </div>
+            <button type="button" class="btn btn-primary" @click="send()">send</button>
+        </form>
     </div>
 </template>
 
@@ -26,9 +35,10 @@ export default {
                 }
             },
             id: '',
-            article: {},
+            docRef: {},
             title: '',
-            contents: 'Edit Your Content Here!',
+            contents: '',
+            created: '',
         }
     },
     created: function(){
@@ -36,11 +46,11 @@ export default {
         this.db = firebase.firestore();
         if (this.id) {
             var self = this;
-            var docRef = this.db.collection("articles").doc(this.id);
-            docRef.get().then((doc) => {
-                self.article = doc;
+            this.docRef = this.db.collection("articles").doc(this.id);
+            this.docRef.get().then((doc) => {
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
+                self.created = doc.get('created');
             }).catch((error) => {
                 alert("Error getting document:" + error);
             });
@@ -48,21 +58,34 @@ export default {
     },
     methods: {
         send: function(){
-            var date = new Date();
-            if (!this.id) {
-                this.db.collection("articles").add({
-                    title: "hello world",
-                    contents: this.contents,
-                    created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
+            var self = this;
+            if (!self.id) {
+                self.db.collection("articles").add({
+                    title: self.title,
+                    contents: self.contents,
+                    created: firebase.firestore.FieldValue.serverTimestamp(),
+                    updated: firebase.firestore.FieldValue.serverTimestamp(),
                 })
                 .then((docRef) => {
-                    console.log("Document written with ID: ", docRef.id);
+                    self.id = docRef.id;
+                    self.docRef = docRef;
+                    console.log("success create");
                 })
                 .catch((error) => {
                     alert("Error adding document: " + error);
                 });
-            } else {// TODO: 編集
-                console.log('aaa');
+            } else {
+                self.docRef.update({
+                    title: self.title,
+                    contents: self.contents,
+                    updated: firebase.firestore.FieldValue.serverTimestamp(),
+                })
+                .then(() => {
+                    console.log("success edit");
+                })
+                .catch((error) => {
+                    alert("Error writing document: " + error);
+                });
             }
         }
     }
