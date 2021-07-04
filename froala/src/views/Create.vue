@@ -29,6 +29,7 @@ export default {
             docRef: {},
             title: '',
             contents: 'Edit Your Content Here!',
+            created: '',
         }
     },
     created: function(){
@@ -40,6 +41,7 @@ export default {
             this.docRef.get().then((doc) => {
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
+                self.created = doc.get('created');
             }).catch((error) => {
                 alert("Error getting document:" + error);
             });
@@ -47,15 +49,14 @@ export default {
     },
     methods: {
         send: function(){
-            var date = new Date();
-            var now = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+            var timestamp = firebase.firestore.FieldValue.serverTimestamp();
             var self = this;
             if (!self.id) {
                 self.db.collection("articles").add({
                     title: "hello world",
                     contents: self.contents,
-                    created: now,
-                    updated: now,
+                    created: timestamp,
+                    updated: timestamp,
                 })
                 .then((docRef) => {
                     self.id = docRef.id;
@@ -69,7 +70,7 @@ export default {
                 self.docRef.set({
                     title: "edit",
                     contents: self.contents,
-                    updated: now,
+                    updated: timestamp,
                 })
                 .then(() => {
                     console.log("success edit");
