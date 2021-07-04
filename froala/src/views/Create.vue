@@ -1,7 +1,16 @@
 <template>
     <div>
-        <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
-        <button @click="send()">send</button>
+        <form>
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input type="email" class="form-control" id="title" v-model="title">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">contents</label>
+                <froala :tag="'textarea'" :config="config" v-model="contents"></froala>
+            </div>
+            <button type="button" class="btn btn-primary" @click="send()">send</button>
+        </form>
     </div>
 </template>
 
