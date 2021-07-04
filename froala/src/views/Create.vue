@@ -62,7 +62,7 @@ export default {
             var self = this;
             if (!self.id) {
                 self.db.collection("articles").add({
-                    title: "hello world",
+                    title: self.title,
                     contents: self.contents,
                     created: timestamp,
                     updated: timestamp,
@@ -77,7 +77,7 @@ export default {
                 });
             } else {
                 self.docRef.set({
-                    title: "edit",
+                    title: self.title,
                     contents: self.contents,
                     updated: timestamp,
                 })
