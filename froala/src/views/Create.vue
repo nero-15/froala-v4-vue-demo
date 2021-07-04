@@ -50,12 +50,14 @@ export default {
     methods: {
         send: function(){
             var date = new Date();
+            var now = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
             var self = this;
             if (!self.id) {
                 self.db.collection("articles").add({
                     title: "hello world",
                     contents: self.contents,
-                    created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
+                    created: now,
+                    updated: now,
                 })
                 .then((docRef) => {
                     self.id = docRef.id;
@@ -65,8 +67,18 @@ export default {
                 .catch((error) => {
                     alert("Error adding document: " + error);
                 });
-            } else {// TODO: 編集
-                console.log('aaa');
+            } else {
+                self.docRef.set({
+                    title: "edit",
+                    contents: self.contents,
+                    updated: now,
+                })
+                .then(() => {
+                    console.log("Document successfully written!");
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
             }
         }
     }
