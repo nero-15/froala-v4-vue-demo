@@ -37,7 +37,7 @@ export default {
             id: '',
             docRef: {},
             title: '',
-            contents: 'Edit Your Content Here!',
+            contents: '',
             created: '',
         }
     },
