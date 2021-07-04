@@ -11,6 +11,11 @@
             </div>
             <button type="button" class="btn btn-primary" @click="send()">send</button>
         </form>
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>view</h2>
+        </div>
+        <froalaView v-model="contents"></froalaView>
     </div>
 </template>
 
@@ -21,6 +26,7 @@ import VueFroala from 'vue-froala-wysiwyg'
 import "froala-editor/css/froala_editor.pkgd.min.css";
 import "froala-editor/css/froala_style.min.css";
 import "froala-editor/js/froala_editor.pkgd.min.js";
+import "froala-editor/js/languages/ja.js";
 Vue.use(VueFroala)
 
 export default {
@@ -29,6 +35,8 @@ export default {
         return {
             db: {},
             config: {
+                language: 'ja',
+                attribution: false,
                 events: {
                     'froalaEditor.initialized': function () {
                     }
