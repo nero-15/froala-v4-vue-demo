@@ -36,6 +36,7 @@ export default {
             db: {},
             config: {
                 language: 'ja',
+                attribution: false,
                 events: {
                     'froalaEditor.initialized': function () {
                     }
