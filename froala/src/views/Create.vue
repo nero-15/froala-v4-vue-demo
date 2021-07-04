@@ -26,7 +26,6 @@ export default {
                 }
             },
             id: '',
-            article: {},
             docRef: {},
             title: '',
             contents: 'Edit Your Content Here!',
@@ -39,7 +38,6 @@ export default {
             var self = this;
             this.docRef = this.db.collection("articles").doc(this.id);
             this.docRef.get().then((doc) => {
-                self.article = doc;
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
             }).catch((error) => {
@@ -62,7 +60,7 @@ export default {
                 .then((docRef) => {
                     self.id = docRef.id;
                     self.docRef = docRef;
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log("success create");
                 })
                 .catch((error) => {
                     alert("Error adding document: " + error);
@@ -74,10 +72,10 @@ export default {
                     updated: now,
                 })
                 .then(() => {
-                    console.log("Document successfully written!");
+                    console.log("success edit");
                 })
                 .catch((error) => {
-                    console.error("Error writing document: ", error);
+                    alert("Error writing document: " + error);
                 });
             }
         }
