@@ -46,7 +46,6 @@ export default {
             docRef: {},
             title: '',
             contents: '',
-            created: '',
         }
     },
     created: function(){
@@ -58,7 +57,6 @@ export default {
             this.docRef.get().then((doc) => {
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
-                self.created = doc.get('created');
             }).catch((error) => {
                 alert("Error getting document:" + error);
             });
