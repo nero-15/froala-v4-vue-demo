@@ -58,14 +58,13 @@ export default {
     },
     methods: {
         send: function(){
-            var timestamp = firebase.firestore.FieldValue.serverTimestamp();
             var self = this;
             if (!self.id) {
                 self.db.collection("articles").add({
                     title: self.title,
                     contents: self.contents,
-                    created: timestamp,
-                    updated: timestamp,
+                    created: firebase.firestore.FieldValue.serverTimestamp(),
+                    updated: firebase.firestore.FieldValue.serverTimestamp(),
                 })
                 .then((docRef) => {
                     self.id = docRef.id;
@@ -76,10 +75,10 @@ export default {
                     alert("Error adding document: " + error);
                 });
             } else {
-                self.docRef.set({
+                self.docRef.update({
                     title: self.title,
                     contents: self.contents,
-                    updated: timestamp,
+                    updated: firebase.firestore.FieldValue.serverTimestamp(),
                 })
                 .then(() => {
                     console.log("success edit");

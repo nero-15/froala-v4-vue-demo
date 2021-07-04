@@ -19,7 +19,7 @@
                         <td>{{ article.created }}</td>
                         <td>{{ article.updated }}</td>
                         <td>
-                            <router-link :to="'/article/' + article.id" class="stretched-link">detail page</router-link>
+                            <router-link :to="'/article/' + article.id">detail page</router-link>
                         </td>
                     </tr>
                 </tbody>
