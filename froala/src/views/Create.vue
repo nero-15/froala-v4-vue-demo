@@ -27,6 +27,7 @@ export default {
             },
             id: '',
             article: {},
+            docRef: {},
             title: '',
             contents: 'Edit Your Content Here!',
         }
@@ -36,8 +37,8 @@ export default {
         this.db = firebase.firestore();
         if (this.id) {
             var self = this;
-            var docRef = this.db.collection("articles").doc(this.id);
-            docRef.get().then((doc) => {
+            this.docRef = this.db.collection("articles").doc(this.id);
+            this.docRef.get().then((doc) => {
                 self.article = doc;
                 self.title = doc.get('title');
                 self.contents = doc.get('contents');
@@ -49,13 +50,16 @@ export default {
     methods: {
         send: function(){
             var date = new Date();
-            if (!this.id) {
-                this.db.collection("articles").add({
+            var self = this;
+            if (!self.id) {
+                self.db.collection("articles").add({
                     title: "hello world",
-                    contents: this.contents,
+                    contents: self.contents,
                     created: date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
                 })
                 .then((docRef) => {
+                    self.id = docRef.id;
+                    self.docRef = docRef;
                     console.log("Document written with ID: ", docRef.id);
                 })
                 .catch((error) => {
